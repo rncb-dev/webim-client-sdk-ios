@@ -26,7 +26,6 @@
 
 import Foundation
 import UIKit
-
 /**
  Class that handles HTTP-request sending by SDK.
  - author:
@@ -34,7 +33,7 @@ import UIKit
  - copyright:
  2017 Webim
  */
-class AbstractRequestLoop {
+class AbstractRequestLoop: NSObject, URLSessionTaskDelegate {
     
     // MARK: - Constants
     enum HTTPMethods: String {
@@ -61,6 +60,7 @@ class AbstractRequestLoop {
     private var currentDataTask: URLSessionDataTask?
     let completionHandlerExecutor: ExecIfNotDestroyedHandlerExecutor?
     let internalErrorListener: InternalErrorListener?
+    private var webimServerTrustPolicy = WebimServerTrustPolicy()
     
     init(completionHandlerExecutor: ExecIfNotDestroyedHandlerExecutor?,
          internalErrorListener: InternalErrorListener?) {
@@ -100,9 +100,11 @@ class AbstractRequestLoop {
         return running
     }
     
+    
+    
     func perform(request: URLRequest) throws -> Data {
-        var requestWithUesrAngent = request
-        requestWithUesrAngent.setValue("iOS: Webim-Client 3.36.2; (\(UIDevice.current.model); \(UIDevice.current.systemVersion)); Bundle ID and version: \(Bundle.main.bundleIdentifier ?? "none") \(Bundle.main.infoDictionary?["CFBundleVersion"] ?? "none")", forHTTPHeaderField: "User-Agent")
+        var requestWithUserAgent = request
+        requestWithUserAgent.setValue("iOS: Webim-Client 3.36.5; (\(UIDevice.current.model); \(UIDevice.current.systemVersion)); Bundle ID and version: \(Bundle.main.bundleIdentifier ?? "none") \(Bundle.main.infoDictionary?["CFBundleVersion"] ?? "none")", forHTTPHeaderField: "User-Agent")
         
         var errorCounter = 0
         var lastHTTPCode = -1
@@ -114,9 +116,9 @@ class AbstractRequestLoop {
             let semaphore = DispatchSemaphore(value: 0)
             var receivedData: Data? = nil
             
-            log(request: requestWithUesrAngent)
+            log(request: requestWithUserAgent)
             
-            let dataTask = URLSession.shared.dataTask(with: requestWithUesrAngent) { [weak self] data, response, error in
+            let dataTask = URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue: OperationQueue.main).dataTask(with: requestWithUserAgent) { [weak self] data, response, error in
                 guard let `self` = `self` else {
                     return
                 }
@@ -128,8 +130,8 @@ class AbstractRequestLoop {
                 
                 let webimLoggerEntry = self.configureLogMessage(
                     type: "response",
-                    url: requestWithUesrAngent.url,
-                    parameters: requestWithUesrAngent.httpBody,
+                    url: requestWithUserAgent.url,
+                    parameters: requestWithUserAgent.httpBody,
                     code: httpCode,
                     data: data,
                     error: error
@@ -154,6 +156,7 @@ class AbstractRequestLoop {
                 
                 semaphore.signal()
             }
+  
             currentDataTask = dataTask
             dataTask.resume()
             
@@ -187,8 +190,8 @@ class AbstractRequestLoop {
             if httpCode == lastHTTPCode {
                 let webimLoggerEntry = self.configureLogMessage(
                     type: "Request failed",
-                    url: requestWithUesrAngent.url,
-                    parameters: requestWithUesrAngent.httpBody,
+                    url: requestWithUserAgent.url,
+                    parameters: requestWithUserAgent.httpBody,
                     code: httpCode
                 )
                 WebimInternalLogger.shared.log(entry: webimLoggerEntry,
@@ -217,6 +220,13 @@ class AbstractRequestLoop {
         
         throw UnknownError.interrupted
     }
+    
+    func urlSession(_ session: URLSession, task: URLSessionTask, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
+        self.webimServerTrustPolicy.urlSessionValid(challenge: challenge) { challenge, URLCredential in
+            completionHandler(challenge, URLCredential)
+        }
+    }
+    
     
     func handleRequestLoop(error: UnknownError) {
         switch error {

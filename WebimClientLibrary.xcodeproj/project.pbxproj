@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		113057D6256E8088004BB13E /* StickerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113057D5256E8088004BB13E /* StickerItem.swift */; };
 		113057A9256D209D004BB13E /* UploadedFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113057A8256D209D004BB13E /* UploadedFile.swift */; };
 		113057AC256D22DE004BB13E /* UploadedFileImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113057AB256D22DE004BB13E /* UploadedFileImpl.swift */; };
+		113057D6256E8088004BB13E /* StickerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113057D5256E8088004BB13E /* StickerItem.swift */; };
 		1134DD5A234A3FF5008FA6F0 /* NotFatalErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1134DD59234A3FF5008FA6F0 /* NotFatalErrorHandler.swift */; };
 		1134DD5C234A4BC8008FA6F0 /* WebimNotFatalError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1134DD5B234A4BC8008FA6F0 /* WebimNotFatalError.swift */; };
 		1134DD5E234A69FF008FA6F0 /* WebimNotFatalErrorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1134DD5D234A69FF008FA6F0 /* WebimNotFatalErrorImpl.swift */; };
@@ -118,6 +118,7 @@
 		CE86FA95203AF37F00CB9C2D /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE86FA94203AF37F00CB9C2D /* UIColor.swift */; };
 		CE86FAAB203B2A2600CB9C2D /* OperatorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE86FAAA203B2A2600CB9C2D /* OperatorFactory.swift */; };
 		CE86FAAD203B2A4500CB9C2D /* DepartmentFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE86FAAC203B2A4500CB9C2D /* DepartmentFactory.swift */; };
+		CEAE544E2863257200B69CF8 /* WebimServerTrustPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAE544D2863257200B69CF8 /* WebimServerTrustPolicy.swift */; };
 		CEBF03962211D5EE001658D8 /* FAQStructureItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBF03952211D5EE001658D8 /* FAQStructureItem.swift */; };
 		CEBF03982211D837001658D8 /* FAQCategoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBF03972211D837001658D8 /* FAQCategoryItem.swift */; };
 		CEBF039A2211F070001658D8 /* FAQCategoryInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBF03992211F070001658D8 /* FAQCategoryInfo.swift */; };
@@ -126,9 +127,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		113057D5256E8088004BB13E /* StickerItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StickerItem.swift; sourceTree = "<group>"; };
 		113057A8256D209D004BB13E /* UploadedFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadedFile.swift; sourceTree = "<group>"; };
 		113057AB256D22DE004BB13E /* UploadedFileImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadedFileImpl.swift; sourceTree = "<group>"; };
+		113057D5256E8088004BB13E /* StickerItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StickerItem.swift; sourceTree = "<group>"; };
 		1134DD59234A3FF5008FA6F0 /* NotFatalErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotFatalErrorHandler.swift; sourceTree = "<group>"; };
 		1134DD5B234A4BC8008FA6F0 /* WebimNotFatalError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebimNotFatalError.swift; sourceTree = "<group>"; };
 		1134DD5D234A69FF008FA6F0 /* WebimNotFatalErrorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebimNotFatalErrorImpl.swift; sourceTree = "<group>"; };
@@ -239,6 +240,7 @@
 		CE86FA94203AF37F00CB9C2D /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		CE86FAAA203B2A2600CB9C2D /* OperatorFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperatorFactory.swift; sourceTree = "<group>"; };
 		CE86FAAC203B2A4500CB9C2D /* DepartmentFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DepartmentFactory.swift; sourceTree = "<group>"; };
+		CEAE544D2863257200B69CF8 /* WebimServerTrustPolicy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebimServerTrustPolicy.swift; sourceTree = "<group>"; };
 		CEBF03952211D5EE001658D8 /* FAQStructureItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQStructureItem.swift; sourceTree = "<group>"; };
 		CEBF03972211D837001658D8 /* FAQCategoryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQCategoryItem.swift; sourceTree = "<group>"; };
 		CEBF03992211F070001658D8 /* FAQCategoryInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQCategoryInfo.swift; sourceTree = "<group>"; };
@@ -335,6 +337,7 @@
 				8FD24471200CE25A007EB9CB /* WebimClient.swift */,
 				8FD24472200CE25A007EB9CB /* RemoteHistoryProvider.swift */,
 				8FD2447A200CE25A007EB9CB /* AbstractRequestLoop.swift */,
+				CEAE544D2863257200B69CF8 /* WebimServerTrustPolicy.swift */,
 				8FD2447B200CE25A007EB9CB /* DeltaCallback.swift */,
 				8FD2447C200CE25A007EB9CB /* ActionRequestLoop.swift */,
 				8FD2447D200CE25A007EB9CB /* SessionDestroyer.swift */,
@@ -618,6 +621,7 @@
 				CEBF039A2211F070001658D8 /* FAQCategoryInfo.swift in Sources */,
 				CE2E681120123DB7004E99EA /* Array.swift in Sources */,
 				8FD244D8200CE25C007EB9CB /* MessageItem.swift in Sources */,
+				CEAE544E2863257200B69CF8 /* WebimServerTrustPolicy.swift in Sources */,
 				8FD244AA200CE25C007EB9CB /* WebimRemoteNotification.swift in Sources */,
 				8FD244B9200CE25C007EB9CB /* LocationSettingsHolder.swift in Sources */,
 				8FD244B7200CE25C007EB9CB /* MessageComposingHandler.swift in Sources */,
